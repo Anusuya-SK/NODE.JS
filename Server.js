@@ -1,15 +1,39 @@
 const http = require("http");
+const fs = require("fs");
 
 const server = http.createServer((req, res)=>{
-    console.log("Request made");
-    console.log(req.url);
-    console.log(req.method);
 
     res.setHeader("Content-Type", "text/html");
-    res.write("<head rel='script' href=''></head>")
-    res.write("<h1>Hi, Welcome to this page!</h1>");
-    res.write("<h4>Node Server Example</h4>")
-    res.end();
+    let path = './docs/';
+
+    if(req.url == '/'){
+        path += 'index.html';
+        res.statusCode = 200;
+    } else if(req.url == '/home'){
+        res.statusCode = 301; //301 is redirection status code
+        res.setHeader('Location', '/');
+        res.end();
+    } else if(req.url == '/about'){
+        path += 'about.html';
+        res.statusCode = 200;
+    } else if(req.url == '/blog'){
+        path += 'blog.html';
+        res.statusCode = 200;
+    } else {
+        res.statusCode = 404;
+        path += 'notFound.html';
+    }
+
+    fs.readFile(path, (err, data) => {
+        if(err){
+            console.log(err.message);
+            res.end();
+        } else {
+            // res.write(data);
+            // res.end();
+            res.end(data);
+        }
+    });
 });
 
 server.listen(3000, "localhost", ()=>{
