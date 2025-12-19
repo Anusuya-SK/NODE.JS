@@ -1,5 +1,6 @@
 const http = require("http");
 const fs = require("fs");
+const _ = require('lodash');
 
 const server = http.createServer((req, res)=>{
 
@@ -13,7 +14,7 @@ const server = http.createServer((req, res)=>{
         res.statusCode = 301; //301 is redirection status code
         res.setHeader('Location', '/');
         res.end();
-    } else if(req.url == '/about'){
+    } else if(req.url == '/aboutus'){
         path += 'about.html';
         res.statusCode = 200;
     } else if(req.url == '/blog'){
@@ -38,4 +39,5 @@ const server = http.createServer((req, res)=>{
 
 server.listen(3000, "localhost", ()=>{
     console.log("Server is listening");
+    console.log(_.random(15,25));
 });

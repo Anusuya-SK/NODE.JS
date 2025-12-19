@@ -1,0 +1,27 @@
+{
+  "name": "nodepractice",
+  "version": "1.1.0",
+  "description": "To practice node",
+  "homepage": "https://github.com/Anusuya-SK/NODE.JS#readme",
+  "bugs": {
+    "url": "https://github.com/Anusuya-SK/NODE.JS/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anusuya-SK/NODE.JS.git"
+  },
+  "license": "ISC",
+  "author": "Anu",
+  "type": "commonjs",
+  "main": "Fs.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
